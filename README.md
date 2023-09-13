@@ -22,7 +22,7 @@ some of the functionlitie of the app includes: a user can search for its favorit
 
 # Link to project
 
-[https://hng-movie-app.netlify.app/]
+[https://riches-hng-movieapp.netlify.app/]
 
 
 # Usage
