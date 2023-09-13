@@ -11,7 +11,7 @@ import MoviesDetails from "./components/Movies/MoviesDetails";
 
 function App() {
   return (
-    <div className="mx-auto px-10  py-5 ">
+    <div className=" mx-4 md:px-10  py-5 ">
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />

@@ -28,7 +28,7 @@ const Banner = ({ movies, searchValue, setSearchValue }) => {
             minHeight: "80vh",
             backgroundColor: "#000",
           }}
-          className={`flex flex-col  justify-center my-10 px-3 lg:px-10 space-y-8 py-16 md:space-y-4 lg:h-[50vh] lg:justify-end lg:pb-12`}
+          className={`flex flex-col  justify-center my-10 px-3 lg:px-10 space-y-8 py-16 md:space-y-4 h-[30vh] lg:h-[50vh] lg:justify-end lg:pb-12`}
         >
           <h1 className="font-bold text-white text-2xl lg:text-6xl md:text-4xl ">
             {movie?.title || movie?.name}
