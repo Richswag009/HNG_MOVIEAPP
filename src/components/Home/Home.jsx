@@ -8,19 +8,25 @@ import Banner from "../Header/Banner";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [genre, setGenre] = useState([]);
 
   // get all genres
   const getAllGenres = async () => {
-    setIsLoading(true);
-    const response = await axios.get(getGenres());
-    const tvResponse = await axios.get(getTvGenres());
-    //  setting both request to a state using  spread operators
-    setGenre([...response.data.genres, ...tvResponse.data.genres]);
-    setIsLoading(false);
+    setLoading(true);
+    setError(false);
+    try {
+      const response = await axios.get(getGenres());
+      const tvResponse = await axios.get(getTvGenres());
+      //  setting both requesetLoadingst to a state using  spread operators
+      setGenre([...response.data.genres, ...tvResponse.data.genres]);
+    } catch (error) {
+      console.error("Error fetching movie details:", error);
+      setError(true);
+      setLoading(false);
+    }
   };
 
   // fetch all movies
@@ -28,15 +34,19 @@ const Home = () => {
   // using useeffect on page load
   useEffect(() => {
     const getAllMovie = async () => {
-      setIsLoading(true);
-      const response = await axios.get(
-        searchValue ? searchMovies(`${searchValue}`) : FetchDataFromApi()
-      );
-      // if(!response.)
-      const data = await response.data.results;
-      setMovies(data);
-      console.log(data);
-      setIsLoading(false);
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          searchValue ? searchMovies(`${searchValue}`) : FetchDataFromApi()
+        );
+        const data = await response.data.results;
+        console.log(data);
+        setMovies(data);
+      } catch (error) {
+        console.error("Error fetching movie details:", error);
+        setError(true);
+      }
+      setLoading(false);
     };
 
     getAllMovie();
@@ -66,7 +76,8 @@ const Home = () => {
 
       <div className=" my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-1 items-center ">
         {!isLoading && allMovies}
-        {isLoading && <p className="text-3xl ">Loading......</p>}
+        {isLoading && <p className="text-3xl text-center ">Loading......</p>}
+        {error && <p className="text-3xl ">Error fetching data {error}</p>}
       </div>
     </section>
   );

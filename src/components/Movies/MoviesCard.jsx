@@ -5,15 +5,10 @@ import { useState } from "react";
 import Card from "../../Utils/Card";
 import imbd from "../../assets/imdb.png";
 import rot from "../../assets/rot.png";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 const baseUrl = "https://image.tmdb.org/t/p/original/";
 
-const MoviesCard = ({ movie, genreList, loading }) => {
-  const id = useParams();
-  const post = movie[id];
-
-  const [favorite, setFavorite] = useState(false);
-
+const MoviesCard = ({ movie, genreList }) => {
   const { genre_ids } = movie;
   // console.log("id", genre_ids);
   const genereNames = genreList
@@ -22,9 +17,6 @@ const MoviesCard = ({ movie, genreList, loading }) => {
       })
     : [];
 
-  const toggleFavorite = () => {
-    setFavorite(!favorite);
-  };
   const formatDateToUTC = (dateString) => {
     const date = new Date(dateString);
     const utcDateString = `${date.getUTCFullYear()}-${(date.getUTCMonth() + 1)

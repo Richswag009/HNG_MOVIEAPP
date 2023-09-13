@@ -3,8 +3,8 @@ import Header from "../Header/Header";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { getSingleMovie } from "../api/FetchMovies";
-import Skeleton from "react-loading-skeleton";
 import { FaPlay } from "react-icons/fa";
+import Loading from "../../Utils/Loading";
 
 const MoviesDetails = () => {
   const params = useParams();
@@ -20,7 +20,6 @@ const MoviesDetails = () => {
         const data = response.data;
         setMovie(data);
         setLoading(false);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching movie details:", error);
         setError(true);
@@ -30,23 +29,6 @@ const MoviesDetails = () => {
     getMovieDetails();
   }, [id]);
 
-  const Loading = () => {
-    return (
-      <div className="grid grid-cols-1 lg:grid-cols-2  gap-4 mt-20 mx-20">
-        <div>
-          <Skeleton height={400} />
-        </div>
-        <div>
-          <Skeleton height={50} width={300} />
-          <Skeleton height={75} />
-          <Skeleton height={25} width={150} />
-          <Skeleton height={50} />
-          <Skeleton height={150} />
-          <Skeleton height={50} width={100} />
-        </div>
-      </div>
-    );
-  };
   const formatDateToUTC = (dateString) => {
     const date = new Date(dateString);
     const utcDateString = `${date.getUTCFullYear()}-${(date.getUTCMonth() + 1)

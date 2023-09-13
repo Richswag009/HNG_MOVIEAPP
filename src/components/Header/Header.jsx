@@ -7,7 +7,7 @@ import logo from "../../assets/tv.png";
 
 const Header = ({ searchValue, setSearchValue }) => {
   return (
-    <nav className=" flex flex-col gap-4 md:flex-row md:justify-between items-center ">
+    <nav className=" flex flex-col md:gap-4 md:flex-row md:justify-between items-center ">
       <Link to="/">
         <div className="flex flex-row justify-between items-center space-x-2">
           <h1 className="text-2xl font-bold"> Movies</h1>
