@@ -6,9 +6,12 @@ import Card from "../../Utils/Card";
 import imbd from "../../assets/imdb.png";
 import rot from "../../assets/rot.png";
 import { Link } from "react-router-dom";
+import { AiFillHeart } from "react-icons/ai";
+import { FiHeart } from "react-icons/fi";
 const baseUrl = "https://image.tmdb.org/t/p/original/";
 
 const MoviesCard = ({ movie, genreList }) => {
+  const [favorite, setFavorite] = useState(false);
   const { genre_ids } = movie;
   // console.log("id", genre_ids);
   const genereNames = genreList
@@ -25,16 +28,26 @@ const MoviesCard = ({ movie, genreList }) => {
     return utcDateString;
   };
 
+  const toggleFavorite = () => {
+    setFavorite((prevState) => !prevState);
+  };
+
   return (
     <Card data-testid="movie-card" id="movies">
+      <img
+        data-testid="movie-poster"
+        src={`${baseUrl}${movie?.poster_path || movie?.backdrop_path} `}
+        alt={movie?.title || movie?.original_title || movie?.original_name}
+        className="w-[300] h-[400] relative transition-all transform hover:scale-95 delay-300 duration-300 ease-in-out"
+      />
+      <span onClick={toggleFavorite} className="absolute top-1 right-1">
+        {favorite ? (
+          <AiFillHeart className="text-red-700" size={40} />
+        ) : (
+          <FiHeart className="text-[#1ff]" size={40} />
+        )}
+      </span>
       <Link to={`/movies/${movie.id}`}>
-        <img
-          data-testid="movie-poster"
-          src={`${baseUrl}${movie?.poster_path || movie?.backdrop_path} `}
-          alt={movie?.title || movie?.original_title || movie?.original_name}
-          className="w-[300] h-[400] transition-all transform hover:scale-95 delay-300 duration-300 ease-in-out"
-        />
-
         <div className="p-3 mb-5 w-full">
           <p className="text-sm font-bold ">
             Genres:

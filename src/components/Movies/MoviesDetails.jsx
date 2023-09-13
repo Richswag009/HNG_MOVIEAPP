@@ -56,16 +56,16 @@ const MoviesDetails = () => {
               minHeight: "80vh",
               backgroundColor: "#000",
             }}
-            className={`flex flex-col my-10 px-10 space-y-2 py-10 md:space-y-4 lg:h-[50vh] lg:justify-center lg:pb-12`}
+            className={`flex flex-col my-10 justify-center px-10 space-y-2 py-10 md:space-y-4 lg:h-[50vh] lg:justify-center lg:pb-12`}
           >
-            <div className="flex  justify-center items-center">
+            <div className="flex flex-row justify-center items-center">
               <button className="banner__button bg-red-600 text-white">
                 <FaPlay className="h-4 w-4 text-white md:h-7" /> Play
                 <span>WATCH TRAILER</span>
               </button>
             </div>
           </div>
-          <div className=" p-[8%]">
+          <div className="p-[4%] lg:p-[8%]">
             <h2
               className="text-3xl font-extrabold text-[#be123c]"
               data-testid="movie-title"
