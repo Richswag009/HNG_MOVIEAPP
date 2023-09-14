@@ -79,9 +79,9 @@ const Home = () => {
         loading={isLoading}
       />
       {!isLoading && !error ? (
-        <div>
-          <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold text-[#be123c]">
+        <div className="lg:px-10 px-3">
+          <div className="flex justify-between items-center mt-10">
+            <h2 className="text-2xl font-bold text-[#11183d]">
               Featured movies{" "}
             </h2>
 

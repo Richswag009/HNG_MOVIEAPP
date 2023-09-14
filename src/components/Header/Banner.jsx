@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Header from "./Header";
+
 // import { GoInfo } from "react-icons/go";
 
 // eslint-disable-next-line react/prop-types
@@ -15,7 +16,6 @@ const Banner = ({ movies, searchValue, setSearchValue, loading }) => {
 
   return (
     <header>
-      <Header searchValue={searchValue} setSearchValue={setSearchValue} />
       <Link to={`/movies/${movie?.id}`}>
         {!loading && (
           <div
@@ -29,19 +29,24 @@ const Banner = ({ movies, searchValue, setSearchValue, loading }) => {
               minHeight: "80vh",
               backgroundColor: "#000",
             }}
-            className={`flex flex-col  justify-center my-10 px-3 lg:px-10 space-y-8 py-16 md:space-y-4 h-[30vh] lg:h-[50vh] lg:justify-end lg:pb-12`}
+            className={``}
           >
-            <h1 className="font-bold text-white text-2xl lg:text-6xl md:text-4xl ">
-              {movie?.title || movie?.name}
-            </h1>
-            <p className="text-shadow-md text-white max-w-xs text-xs md:max-w-lg md:text-lg lg:text-2xl">
-              {movie?.overview} ...
-            </p>
-            <div className="flex space-x-3">
-              <button className="banner__button bg-red-600 text-white">
-                <FaPlay className="h-4 w-4 text-white md:h-7" /> Play
-                <span>WATCH TRAILER</span>
-              </button>
+            {" "}
+            <Header searchValue={searchValue} setSearchValue={setSearchValue} />
+            <div className="flex flex-col  justify-center my-10 px-3 lg:px-10 space-y-8 py-16 md:space-y-4 h-[30vh] lg:h-[50vh] lg:justify-end lg:pb-12`">
+              <h1 className="font-bold text-white text-2xl lg:text-6xl md:text-4xl ">
+                {movie?.title || movie?.name}
+              </h1>
+
+              <p className="text-shadow-md text-white max-w-xs text-xs md:max-w-lg md:text-lg lg:text-2xl">
+                {movie?.overview}
+              </p>
+              <div className="flex space-x-3">
+                <button className="banner__button bg-red-600 text-white">
+                  <FaPlay className="h-4 w-4 text-white md:h-7" /> Play
+                  <span>WATCH TRAILER</span>
+                </button>
+              </div>
             </div>
           </div>
         )}

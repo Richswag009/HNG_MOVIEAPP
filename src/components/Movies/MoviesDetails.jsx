@@ -64,7 +64,7 @@ const MoviesDetails = () => {
             </div>
           </div>
 
-          <div className="p-[4%] lg:p-[8%]">
+          <div className="px-3 lg:px-10">
             <h2
               className="text-3xl font-extrabold text-[#be123c]"
               data-testid="movie-title"

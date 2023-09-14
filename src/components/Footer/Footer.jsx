@@ -28,9 +28,9 @@ const Footer = () => {
         <Link href="#">Privacy Policy</Link>
         <Link href="#">Press Room</Link>
       </div>
-      <center className="">
-        <p>2023&copy; MovieBox by Riches Metelewawon</p>
-      </center>
+      <p className="text-lg font-semibold ">
+        &copy;2023 MovieBox by Riches Metelewawon
+      </p>
     </div>
   );
 };
