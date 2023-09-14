@@ -78,8 +78,14 @@ const MoviesCard = ({ movie, genreList }) => {
               <p className=" font-normal"> 97%</p>
             </span>
           </div>
-          <p data-testid="movie-release-date" className="">
-            {`Release Date (UTC): ${formatDateToUTC(movie.release_date)} `}
+          <p>
+            Release Date (UTC):
+            <span
+              data-testid="movie-release-date"
+              className="font-bold text-2xl"
+            >
+              {`${formatDateToUTC(movie.release_date)}`}
+            </span>
           </p>
         </div>
       </Link>
