@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import Header from "../Header/Header";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { getSingleMovie } from "../api/FetchMovies";
 import { FaPlay } from "react-icons/fa";
+import Navbar from "../Header/Navbar";
 
 const MoviesDetails = () => {
   const params = useParams();
@@ -39,7 +39,7 @@ const MoviesDetails = () => {
 
   return (
     <section>
-      <Header />
+      <Navbar />
       {!loading && !error ? (
         <div>
           <div

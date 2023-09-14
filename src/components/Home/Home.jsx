@@ -71,14 +71,14 @@ const Home = () => {
       {error && (
         <p className="text-3xl text-center">Error fetching data {error}</p>
       )}
+      <Banner
+        movies={movies}
+        setSearchValue={setSearchValue}
+        searchValue={searchValue}
+        loading={isLoading}
+      />
       {!isLoading && !error ? (
         <div>
-          <Banner
-            movies={movies}
-            setSearchValue={setSearchValue}
-            searchValue={searchValue}
-          />
-
           <div className=" my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-1 items-center ">
             {!isLoading && allMovies}
           </div>
