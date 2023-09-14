@@ -72,18 +72,15 @@ const MoviesDetails = () => {
             >
               {movie.title}
             </h2>
-            <p>
+            <p className="font-bold text-2xl">
               Release Date (UTC):
-              <span
-                data-testid="movie-release-date"
-                className="font-bold text-2xl"
-              >
-                {`${formatDateToUTC(movie.release_date)}`}
+              <span data-testid="movie-release-date">
+                {`${formatDateToUTC(movie?.release_date)}`}
               </span>
             </p>
 
-            <p>
-              <span data-testid="movie-runtime" className="font-bold text-2xl">
+            <p className="font-bold text-2xl">
+              <span data-testid="movie-runtime">
                 Runtime: {movie.runtime} minutes
               </span>
             </p>
