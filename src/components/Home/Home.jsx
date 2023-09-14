@@ -9,23 +9,22 @@ import Banner from "../Header/Banner";
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [searchValue, setSearchValue] = useState("");
   const [genre, setGenre] = useState([]);
 
   // get all genres
   const getAllGenres = async () => {
     setLoading(true);
-    setError(false);
     try {
       const response = await axios.get(getGenres());
       const tvResponse = await axios.get(getTvGenres());
       //  setting both requesetLoadingst to a state using  spread operators
       setGenre([...response.data.genres, ...tvResponse.data.genres]);
     } catch (error) {
-      console.error("Error fetching movie details:", error);
-      setError(true);
       setLoading(false);
+      console.error("Error fetching movie details:", error);
+      setError(error.message);
     }
   };
 
@@ -42,11 +41,12 @@ const Home = () => {
         const data = await response.data.results;
         console.log(data);
         setMovies(data);
+        setLoading(false);
       } catch (error) {
-        console.error("Error fetching movie details:", error);
-        setError(true);
+        setLoading(false);
+        console.error(error);
+        setError(error.message);
       }
-      setLoading(false);
     };
 
     getAllMovie();
@@ -68,21 +68,26 @@ const Home = () => {
   //
   return (
     <section className="">
-      {!error && (
-        <Banner
-          movies={movies}
-          setSearchValue={setSearchValue}
-          searchValue={searchValue}
-        />
+      {error && (
+        <p className="text-3xl text-center">Error fetching data {error}</p>
       )}
+      {!isLoading && !error ? (
+        <div>
+          <Banner
+            movies={movies}
+            setSearchValue={setSearchValue}
+            searchValue={searchValue}
+          />
 
-      <div className=" my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-1 items-center ">
-        {!isLoading && allMovies}
-        {isLoading && <p className="text-3xl text-center ">Loading......</p>}
-        {error && (
-          <p className="text-3xl text-center">Error fetching data {error}</p>
-        )}
-      </div>
+          <div className=" my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-1 items-center ">
+            {!isLoading && allMovies}
+          </div>
+        </div>
+      ) : (
+        <p className="text-3xl mx-auto flex justify-center item-center ">
+          Loading......
+        </p>
+      )}
     </section>
   );
 };

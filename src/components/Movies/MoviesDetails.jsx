@@ -4,25 +4,25 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { getSingleMovie } from "../api/FetchMovies";
 import { FaPlay } from "react-icons/fa";
-import Loading from "../../Utils/Loading";
 
 const MoviesDetails = () => {
   const params = useParams();
   const id = params.moviesId;
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getMovieDetails = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(getSingleMovie(`${id}`));
         const data = response.data;
         setMovie(data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching movie details:", error);
-        setError(true);
+        setError(error.messgae);
         setLoading(false);
       }
     };
@@ -38,12 +38,9 @@ const MoviesDetails = () => {
   };
 
   return (
-    <div>
+    <section>
       <Header />
-      {error && <p>Error fetching data</p>}
-      {loading ? (
-        <Loading />
-      ) : (
+      {!loading && !error ? (
         <div>
           <div
             style={{
@@ -65,6 +62,7 @@ const MoviesDetails = () => {
               </button>
             </div>
           </div>
+
           <div className="p-[4%] lg:p-[8%]">
             <h2
               className="text-3xl font-extrabold text-[#be123c]"
@@ -92,8 +90,10 @@ const MoviesDetails = () => {
             </p>
           </div>
         </div>
+      ) : (
+        <p>{error}</p>
       )}
-    </div>
+    </section>
   );
 };
 

@@ -1,12 +1,7 @@
 // import { useState, useEffect } from "react";
 import Home from "./components/Home/Home";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  createBrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoviesDetails from "./components/Movies/MoviesDetails";
 
 function App() {
