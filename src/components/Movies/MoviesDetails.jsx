@@ -30,7 +30,7 @@ const MoviesDetails = () => {
   }, [id]);
 
   const formatDateToUTC = (dateString) => {
-    const date = new Date(dateString);
+    const date = new Date(dateString).toString();
     const utcDateString = `${date.getUTCFullYear()}-${(date.getUTCMonth() + 1)
       .toString()
       .padStart(2, "0")}-${date.getUTCDate().toString().padStart(2, "0")}`;
@@ -72,11 +72,20 @@ const MoviesDetails = () => {
             >
               {movie.title}
             </h2>
-            <p data-testid="movie-release-date" className="font-bold text-2xl">
-              {`Release Date (UTC): ${formatDateToUTC(movie.release_date)} `}
+            <p>
+              Release Date (UTC): 
+              <span
+                data-testid="movie-release-date"
+                className="font-bold text-2xl"
+              >
+                {`${formatDateToUTC(movie.release_date)} `}
+              </span>
             </p>
-            <p data-testid="movie-runtime" className="font-bold text-2xl">
-              Runtime: {movie.runtime} minutes
+
+            <p>
+              <span data-testid="movie-runtime" className="font-bold text-2xl">
+                Runtime: {movie.runtime} minutes
+              </span>
             </p>
             <p
               data-testid="movie-overview"
