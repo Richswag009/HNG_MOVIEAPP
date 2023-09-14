@@ -4,6 +4,7 @@ import axios from "axios";
 import { getSingleMovie } from "../api/FetchMovies";
 import { FaPlay } from "react-icons/fa";
 import Navbar from "../Header/Navbar";
+import Footer from "../Footer/Footer";
 
 const MoviesDetails = () => {
   const params = useParams();
@@ -93,6 +94,9 @@ const MoviesDetails = () => {
       ) : (
         <p>{error}</p>
       )}
+      <footer>
+        <Footer />
+      </footer>
     </section>
   );
 };
