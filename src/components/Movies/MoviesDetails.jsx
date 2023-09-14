@@ -30,7 +30,7 @@ const MoviesDetails = () => {
   }, [id]);
 
   const formatDateToUTC = (dateString) => {
-    const date = new Date(dateString).toString();
+    const date = new Date(dateString);
     const utcDateString = `${date.getUTCFullYear()}-${(date.getUTCMonth() + 1)
       .toString()
       .padStart(2, "0")}-${date.getUTCDate().toString().padStart(2, "0")}`;
@@ -78,7 +78,7 @@ const MoviesDetails = () => {
                 data-testid="movie-release-date"
                 className="font-bold text-2xl"
               >
-                {formatDateToUTC(movie?.release_date)}
+                {`${formatDateToUTC(movie.release_date)}`}
               </span>
             </p>
 
