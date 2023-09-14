@@ -73,12 +73,12 @@ const MoviesDetails = () => {
               {movie.title}
             </h2>
             <p>
-              Release Date (UTC): 
+              Release Date (UTC):
               <span
                 data-testid="movie-release-date"
                 className="font-bold text-2xl"
               >
-                {`${formatDateToUTC(movie.release_date)} `}
+                {formatDateToUTC(movie?.release_date)}
               </span>
             </p>
 
