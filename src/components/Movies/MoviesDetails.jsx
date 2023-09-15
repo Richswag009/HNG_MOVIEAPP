@@ -20,6 +20,7 @@ const MoviesDetails = () => {
         const response = await axios.get(getSingleMovie(`${id}`));
         const data = response.data;
         setMovie(data);
+        console.log(data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching movie details:", error);

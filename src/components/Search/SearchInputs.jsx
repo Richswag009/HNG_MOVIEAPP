@@ -7,7 +7,7 @@ const SearchInputs = ({ searchValue, setSearchValue }) => {
     <form action="" className="flex flex-row items-center border">
       <input
         type="text"
-        className="form-input w-full outline-none border-none  first-line:"
+        className="form-input w-full outline-none border-none bg-[#010] first-line:"
         value={searchValue}
         placeholder="What do you want to watch?"
         onChange={(e) => setSearchValue(e.target.value)}

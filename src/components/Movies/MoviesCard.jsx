@@ -71,7 +71,7 @@ const MoviesCard = ({ movie, genreList }) => {
           <div className="flex flex-row justify-between items-center gap-12">
             <span className="flex flex-row justify-start items-center  gap-2 py-5 px-0 text-[#111827]">
               <img src={imbd} alt="imbd logo" className=" w-[40%] h-auto" />
-              <p> {movie.vote_average}</p>
+              <p> {movie.vote_average * 10}/100</p>
             </span>
             <span className="flex flex-row justify-start items-center  gap-3 py-5 px-0 text-[#111827]">
               <img src={rot} alt="rot image" className="w-[30%] h-full" />

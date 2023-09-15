@@ -92,7 +92,7 @@ const Home = () => {
           </div>
         </div>
       ) : (
-        <p className="text-3xl mx-auto flex justify-center item-center ">
+        <p className="text-3xl mx-auto flex  mt-10 justify-center item-center ">
           Loading......
         </p>
       )}
