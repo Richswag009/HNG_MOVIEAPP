@@ -15,7 +15,6 @@ const Header = ({ searchValue, setSearchValue }) => {
         </div>
       </Link>
       <SearchInputs setSearchValue={setSearchValue} searchValue={searchValue} />
-      <p>Sign in</p>
     </nav>
   );
 };
